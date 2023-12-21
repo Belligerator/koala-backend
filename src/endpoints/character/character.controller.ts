@@ -8,7 +8,7 @@ export class CharacterController {
     }
 
     /**
-     * Get all characters, just basic data, no relations.
+     * Get all characters, with their nemeses and secrets.
      * @returns     List of all characters.
      */
     @Get()

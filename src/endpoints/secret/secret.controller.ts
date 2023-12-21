@@ -8,7 +8,7 @@ export class SecretController {
     }
 
     /**
-     * Get all secrets, just basic data, no relations.
+     * Get all secrets, with their nemesis and his character.
      * @returns     List of all secrets.
      */
     @Get()

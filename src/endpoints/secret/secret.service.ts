@@ -11,11 +11,17 @@ export class SecretService {
     ) {}
 
     /**
-     * Get all secrets, just basic data, no relations.
+     * Get all secrets, with their nemesis and his character.
      * @returns     List of all secrets.
      */
     public async getAllSecrets(): Promise<SecretDTO[]> {
-        const entities: SecretEntity[] = await this.secretRepository.find();
+        const entities: SecretEntity[] = await this.secretRepository.find({
+            relations: {
+                nemesis: {
+                    character: true,
+                }
+            }
+        });
         return entities.map((entity: SecretEntity) => new SecretDTO(entity));
     }
 }

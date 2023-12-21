@@ -11,11 +11,16 @@ export class NemesisService {
     ) {}
 
     /**
-     * Get all nemesis, just basic data, no relations.
+     * Get all nemesis, with their character and secrets.
      * @returns     List of all nemeses.
      */
     public async getAllNemeses(): Promise<NemesisDTO[]> {
-        const entities: NemesisEntity[] = await this.nemesisRepository.find();
+        const entities: NemesisEntity[] = await this.nemesisRepository.find({
+            relations: {
+                character: true,
+                secretList: true,
+            }
+        });
         return entities.map((entity: NemesisEntity) => new NemesisDTO(entity));
     }
 }

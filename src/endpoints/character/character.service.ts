@@ -11,11 +11,17 @@ export class CharacterService {
     ) {}
 
     /**
-     * Get all characters, just basic data, no relations.
+     * Get all characters, with their nemeses and secrets.
      * @returns     List of all characters.
      */
     public async getAllCharacters(): Promise<CharacterDTO[]> {
-        const entities: CharacterEntity[] = await this.characterRepository.find();
+        const entities: CharacterEntity[] = await this.characterRepository.find({
+            relations: {
+                nemesisList: {
+                    secretList: true,
+                },
+            }
+        });
         return entities.map((entity: CharacterEntity) => new CharacterDTO(entity));
     }
 }
