@@ -1,5 +1,5 @@
-import { NemesisDTO } from "../nemesis/nemesis.dto";
-import { SecretEntity } from "./secret.entity";
+import { NemesisDTO } from '../nemesis/nemesis.dto';
+import { SecretEntity } from './secret.entity';
 
 export class SecretDTO {
 

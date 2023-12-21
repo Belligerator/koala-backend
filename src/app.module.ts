@@ -7,6 +7,7 @@ import databaseConfig from './config/database-config';
 import { CharacterModule } from './endpoints/character/character.module';
 import { NemesisModule } from './endpoints/nemesis/nemesis.module';
 import { SecretModule } from './endpoints/secret/secret.module';
+import { StatisticsModule } from './endpoints/statistics/statistics.module';
 
 @Module({
     imports: [
@@ -14,7 +15,8 @@ import { SecretModule } from './endpoints/secret/secret.module';
         TypeOrmModule.forRoot(databaseConfig),
         CharacterModule,
         NemesisModule,
-        SecretModule
+        SecretModule,
+        StatisticsModule
     ],
     controllers: [
         AppController,

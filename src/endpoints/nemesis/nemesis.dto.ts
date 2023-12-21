@@ -1,7 +1,7 @@
-import { CharacterDTO } from "../character/character.dto";
-import { SecretDTO } from "../secret/secret.dto";
-import { SecretEntity } from "../secret/secret.entity";
-import { NemesisEntity } from "./nemesis.entity";
+import { CharacterDTO } from '../character/character.dto';
+import { SecretDTO } from '../secret/secret.dto';
+import { SecretEntity } from '../secret/secret.entity';
+import { NemesisEntity } from './nemesis.entity';
 
 export class NemesisDTO {
 

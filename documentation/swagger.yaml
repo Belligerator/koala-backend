@@ -2,7 +2,11 @@ openapi: 3.0.0
 paths:
   /api:
     get:
-      operationId: AppController_getHello
+      operationId: AppController_getSwagger
+      summary: Return Swagger page with API description.
+      description: |-
+        This is the root endpoint. It is redirected to the swagger page.
+        Get swagger page.
       parameters: []
       responses:
         '200':
@@ -10,7 +14,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                type: boolean
   /api/character:
     get:
       operationId: CharacterController_getAllCharacters
@@ -56,6 +60,25 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SecretDTO'
+  /api/statistics:
+    get:
+      operationId: StatisticsController_getStatistics
+      summary: >-
+        Get statistics about characters and nemeses. Return also all characters
+        with their nemeses and secrets.
+      description: >-
+        Get statistics about characters and nemeses. Return also all characters
+        with their nemeses and secrets.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatisticsDTO'
+        '404':
+          description: Throws an exception if no character or nemesis exists.
 info:
   title: Koala API
   description: API description
@@ -137,3 +160,36 @@ components:
       required:
         - id
         - isAlive
+    StatisticsDTO:
+      type: object
+      properties:
+        count_characters:
+          type: number
+        average_age_character:
+          type: number
+        average_weight_characters:
+          type: number
+        count_live_nemesis:
+          type: number
+        average_age_nemesis:
+          type: number
+        count_all:
+          type: number
+        average_age_all:
+          type: number
+        gender:
+          type: object
+        characters:
+          type: array
+          items:
+            $ref: '#/components/schemas/CharacterDTO'
+      required:
+        - count_characters
+        - average_age_character
+        - average_weight_characters
+        - count_live_nemesis
+        - average_age_nemesis
+        - count_all
+        - average_age_all
+        - gender
+        - characters

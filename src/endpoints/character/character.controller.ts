@@ -1,7 +1,7 @@
-import { Controller, Get } from "@nestjs/common";
-import { CharacterService } from "./character.service";
-import { CharacterDTO } from "./character.dto";
-import { ApiOperation } from "@nestjs/swagger";
+import { Controller, Get } from '@nestjs/common';
+import { CharacterService } from './character.service';
+import { CharacterDTO } from './character.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('character')
 export class CharacterController {

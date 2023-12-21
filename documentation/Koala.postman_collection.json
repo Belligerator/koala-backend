@@ -70,6 +70,23 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GET all statistics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{testUrl}}/statistics",
+					"host": [
+						"{{testUrl}}"
+					],
+					"path": [
+						"statistics"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

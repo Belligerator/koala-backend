@@ -1,8 +1,8 @@
-import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { SecretController } from "./secret.controller";
-import { SecretEntity } from "./secret.entity";
-import { SecretService } from "./secret.service";
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { SecretController } from './secret.controller';
+import { SecretEntity } from './secret.entity';
+import { SecretService } from './secret.service';
 
 @Module({
     imports: [TypeOrmModule.forFeature([SecretEntity])],

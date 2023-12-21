@@ -1,7 +1,7 @@
-import { Controller, Get } from "@nestjs/common";
-import { SecretService } from "./secret.service";
-import { SecretDTO } from "./secret.dto";
-import { ApiOperation } from "@nestjs/swagger";
+import { Controller, Get } from '@nestjs/common';
+import { SecretService } from './secret.service';
+import { SecretDTO } from './secret.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('secret')
 export class SecretController {

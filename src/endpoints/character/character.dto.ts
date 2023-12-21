@@ -30,7 +30,7 @@ export class CharacterDTO {
         this.knows_the_answer = characterEntity.knowsTheAnswer;
 
         if (characterEntity.nemesisList) {
-        this.nemesis_list = characterEntity.nemesisList.map((nemesisEntity: NemesisEntity) => new NemesisDTO(nemesisEntity));
+            this.nemesis_list = characterEntity.nemesisList.map((nemesisEntity: NemesisEntity) => new NemesisDTO(nemesisEntity));
         }
     }
 }
