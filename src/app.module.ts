@@ -4,19 +4,17 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import databaseConfig from './config/database-config';
-import { CharacterEntity } from './endpoints/character/character.entity';
-import { NemesisEntity } from './endpoints/nemesis/nemesis.entity';
-import { SecretEntity } from './endpoints/secret/secret.entity';
+import { CharacterModule } from './endpoints/character/character.module';
+import { NemesisModule } from './endpoints/nemesis/nemesis.module';
+import { SecretModule } from './endpoints/secret/secret.module';
 
 @Module({
     imports: [
         ConfigModule.forRoot(),
         TypeOrmModule.forRoot(databaseConfig),
-        TypeOrmModule.forFeature([
-            CharacterEntity,
-            NemesisEntity,
-            SecretEntity
-        ]),
+        CharacterModule,
+        NemesisModule,
+        SecretModule
     ],
     controllers: [
         AppController,
