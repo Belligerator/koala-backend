@@ -16,7 +16,7 @@ Backend is built using [NestJS](https://nestjs.com/), a NodeJS framework. It is 
 
 - Gender, in database table `character` is of type `text`. It would be better to use `enum` type. And have predefined values. Now there are multiple values for one gender, eg. `[male, m, M]` for male.
 
-- Unit test should be added.
+- Unit test should be added. There were not required in the assignment, but they are important and will add them as soon as possible.
 
 ## Demo
 
