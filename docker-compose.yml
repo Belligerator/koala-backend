@@ -1,0 +1,18 @@
+# This is a sample docker-compose file for deploying the Koala backend
+version: '3'
+services:
+
+  backend:
+    image: belligerator/koala-backend:prod
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+      DB_DATABASE: database
+      DB_USER: user
+      DB_PASSWORD: pwd
+      DB_PORT: 5432
+
+  apache:
+    image: belligerator/koala-apache:prod
+    ports:
+      - 5023:80

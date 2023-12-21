@@ -1,73 +1,84 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NestJS backend for the Koala Technical Assessment
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## About
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This repository contains a backend for the Koala Technical Assessment. It is a REST API that provides endpoints for reading data (characters, nemeses, secrets) from the database. The most important endpoint is `/api/statistics` that returns statistics about the data in the database.
 
-## Description
+Backend is built using [NestJS](https://nestjs.com/), a NodeJS framework. It is a REST API that provides endpoints for the app to consume. Backend connects to Koala's example [PostgreSQL](https://www.postgresql.org/) database and interacts with it using [TypeORM](https://typeorm.io/).
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Known issues, what could be improved and what could be added
 
-## Installation
+- Statistics are calculated from the data in the database. There are 3 calls to the database to get the data. One for retrieving characters statistics, one for retrieving nemesis statistics and one for retrieving array of characters with their nemeses. This could be improved by using a single query that would return all the data needed for the statistics. But query may be quite complex. It would be even better to create view in the database that would return the data needed for the statistics. Then the backend would only need to query the view.
 
-```bash
-$ npm install
+- Logger, like winston, could be added to the backend. It would be useful for logging errors and other information into files.
+
+- Backend could be smaller, but I wanted to prepare backend which is ready for future expansion.
+
+- Gender, in database table `character` is of type `text`. It would be better to use `enum` type. And have predefined values. Now there are multiple values for one gender, eg. `[male, m, M]` for male.
+
+## Demo
+
+A demo of the backend can be found at https://koala.belligerator.cz/api/. The demo is running on a Docker container.
+
+For that purpose I have created a docker image for the backend. The image is built using the Dockerfile in the root directory of this repository.
+
+On the server, there is docker-compose file that is used to run the backend. The example file can be found in the root directory.
+
+In the `/documentation` directory, there is a `Koala.postman_collection.json` file that contains a Postman collection with sample requests. You can import it into Postman and use it to test the endpoints.
+
+You can also test the api with you browser. For example, you can try the following endpoints:
+
+- https://koala.belligerator.cz/api/statistics
+- https://koala.belligerator.cz/api/character
+- https://koala.belligerator.cz/api/nemesis
+- https://koala.belligerator.cz/api/secret
+
+Example response from the `/api/statistics` endpoint (characters array is shortened):
+
+```
+{
+  "count_characters": 11,
+  "average_age_character": 39.91,
+  "average_weight_characters": 104.03,
+  "count_live_nemesis": 11,
+  "average_age_nemesis": 127.3,
+  "count_all": 22,
+  "average_age_all": 83.605,
+  "gender": {
+    "male": 6,
+    "female": 2,
+    "other": 3
+  },
+  "characters": [
+    {
+      "id": 2,
+      "name": "Trillian",
+      "gender": "female",
+      "ability": "mathematician",
+      "minimal_distance": "6.2",
+      "weight": "49",
+      "born": "1994-12-14T00:00:00.000Z",
+      "in_space_since": "2014-12-24T17:21:50.000Z",
+      "beer_consumption": 6704,
+      "knows_the_answer": true,
+      "nemesis_list": [
+        {
+          "id": 1,
+          "isAlive": true,
+          "years": 29,
+          "character_id": 2,
+          "secret_list": [
+            {
+              "id": 2,
+              "secret_code": "4168664804",
+              "nemesis_id": 1
+            }
+          ]
+        }
+      ]
+    },]}
 ```
 
-## Running the app
+## Documentation
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Documentation for the endpoints (Swagger) can be found at https://koala.belligerator.cz/api/.
