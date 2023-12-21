@@ -1,0 +1,139 @@
+openapi: 3.0.0
+paths:
+  /api:
+    get:
+      operationId: AppController_getHello
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/character:
+    get:
+      operationId: CharacterController_getAllCharacters
+      summary: Get all characters, with their nemeses and secrets.
+      description: Get all characters, with their nemeses and secrets.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CharacterDTO'
+  /api/nemesis:
+    get:
+      operationId: NemesisController_getAllNemeses
+      summary: Get all nemesis, with their character and secrets.
+      description: Get all nemesis, with their character and secrets.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NemesisDTO'
+  /api/secret:
+    get:
+      operationId: SecretController_getAllSecrets
+      summary: Get all secrets, with their nemesis and his character.
+      description: Get all secrets, with their nemesis and his character.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SecretDTO'
+info:
+  title: Koala API
+  description: API description
+  version: 0.0.1
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    CharacterDTO:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        gender:
+          type: string
+        ability:
+          type: string
+        minimal_distance:
+          type: number
+        weight:
+          type: number
+        born:
+          format: date-time
+          type: string
+        in_space_since:
+          format: date-time
+          type: string
+        beer_consumption:
+          type: number
+        knows_the_answer:
+          type: boolean
+        nemesis_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/NemesisDTO'
+      required:
+        - id
+        - name
+        - ability
+        - minimal_distance
+        - born
+        - beer_consumption
+        - knows_the_answer
+    SecretDTO:
+      type: object
+      properties:
+        id:
+          type: number
+        secret_code:
+          type: number
+        nemesis_id:
+          type: number
+        nemesis:
+          $ref: '#/components/schemas/NemesisDTO'
+      required:
+        - id
+        - secret_code
+        - nemesis_id
+    NemesisDTO:
+      type: object
+      properties:
+        id:
+          type: number
+        isAlive:
+          type: boolean
+        years:
+          type: number
+        character_id:
+          type: number
+        character:
+          $ref: '#/components/schemas/CharacterDTO'
+        secret_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecretDTO'
+      required:
+        - id
+        - isAlive

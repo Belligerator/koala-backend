@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "03450187-9d1e-41a6-ac75-b4052a52a2ee",
+		"name": "Koala",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30244526"
+	},
+	"item": [
+		{
+			"name": "GET all characters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{testUrl}}/character",
+					"host": [
+						"{{testUrl}}"
+					],
+					"path": [
+						"character"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all nemesis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{testUrl}}/nemesis",
+					"host": [
+						"{{testUrl}}"
+					],
+					"path": [
+						"nemesis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all secrets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{testUrl}}/secret",
+					"host": [
+						"{{testUrl}}"
+					],
+					"path": [
+						"secret"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET swagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{testUrl}}",
+					"host": [
+						"{{testUrl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "testUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		}
+	]
+}

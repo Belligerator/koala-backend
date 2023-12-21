@@ -6,7 +6,7 @@ export class SecretDTO {
     public id: number;
     public secret_code: number;
     public nemesis_id: number;
-    public nemesis: NemesisDTO;
+    public nemesis?: NemesisDTO;
 
     constructor(secretEntity: SecretEntity) {
         this.id = secretEntity.id;
