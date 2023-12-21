@@ -1,7 +1,7 @@
-import { StatisticsCharacter } from 'src/models/statistics-character.interface';
+import { StatisticsCharacter } from 'src/models/interfaces/statistics-character.interface';
 import { CharacterDTO } from '../character/character.dto';
-import { GenderStatistics } from 'src/models/gender-statistics.interface';
-import { StatisticsNemesis } from 'src/models/statistics-nemesis.interface';
+import { GenderStatistics } from 'src/models/interfaces/gender-statistics.interface';
+import { StatisticsNemesis } from 'src/models/interfaces/statistics-nemesis.interface';
 
 /**
  * Data transfer object for statistics.

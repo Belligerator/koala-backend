@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { NemesisEntity } from './nemesis.entity';
 import { NemesisDTO } from './nemesis.dto';
-import { StatisticsNemesis } from 'src/models/statistics-nemesis.interface';
+import { StatisticsNemesis } from 'src/models/interfaces/statistics-nemesis.interface';
 
 @Injectable()
 export class NemesisService {

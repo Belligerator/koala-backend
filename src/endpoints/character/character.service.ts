@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CharacterEntity } from './character.entity';
 import { CharacterDTO } from './character.dto';
-import { StatisticsCharacter } from 'src/models/statistics-character.interface';
+import { StatisticsCharacter } from 'src/models/interfaces/statistics-character.interface';
 import { databaseFemaleGenderValues, databaseMaleGenderValues } from 'src/constants';
 
 @Injectable()

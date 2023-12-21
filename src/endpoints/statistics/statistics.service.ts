@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { StatisticsDTO } from './statistics.dto';
-import { StatisticsNemesis } from 'src/models/statistics-nemesis.interface';
-import { StatisticsCharacter } from 'src/models/statistics-character.interface';
+import { StatisticsNemesis } from 'src/models/interfaces/statistics-nemesis.interface';
+import { StatisticsCharacter } from 'src/models/interfaces/statistics-character.interface';
 import { CharacterDTO } from '../character/character.dto';
 import { CharacterService } from '../character/character.service';
 import { NemesisService } from '../nemesis/nemesis.service';
