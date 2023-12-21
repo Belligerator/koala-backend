@@ -1,14 +1,12 @@
-import { ExceptionFilter, Catch, ArgumentsHost, HttpException, Inject, Logger } from '@nestjs/common';
+import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { ContextType, HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface';
+import { HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface';
 
 /**
  * Error handler catching only HTTP exceptions.
  */
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
-
-    constructor() { }
 
     public catch(exception: HttpException, host: ArgumentsHost): void {
         const ctx: HttpArgumentsHost = host.switchToHttp();

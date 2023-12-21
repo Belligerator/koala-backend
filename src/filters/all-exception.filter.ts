@@ -1,7 +1,7 @@
-import { ExceptionFilter, Catch, ArgumentsHost, HttpStatus, Logger, Inject } from '@nestjs/common';
+import { ExceptionFilter, Catch, ArgumentsHost, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AbstractHttpAdapter, HttpAdapterHost } from '@nestjs/core';
-import { ContextType, HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface';
+import { HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface';
 import { ErrorResponse } from 'src/models/dtos/error-response.dto';
 import { ExpressAdapter } from '@nestjs/platform-express';
 
