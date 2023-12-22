@@ -1,20 +1,21 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { Repository } from "typeorm";
-import { CharacterService } from "../character.service";
-import { CharacterEntity } from "../character.entity";
-import { getRepositoryToken } from "@nestjs/typeorm";
-import { CharacterDTO } from "../character.dto";
-import { NemesisEntity } from "../../nemesis/nemesis.entity";
-import { NemesisDTO } from "../../nemesis/nemesis.dto";
-import { SecretEntity } from "../../secret/secret.entity";
-import { SecretDTO } from "../../secret/secret.dto";
-import { StatisticsCharacter } from "src/models/interfaces/statistics-character.interface";
-import { NotFoundException } from "@nestjs/common";
+import { Test, TestingModule } from '@nestjs/testing';
+import { Repository } from 'typeorm';
+import { CharacterService } from '../character.service';
+import { CharacterEntity } from '../character.entity';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { CharacterDTO } from '../character.dto';
+import { NemesisEntity } from '../../nemesis/nemesis.entity';
+import { NemesisDTO } from '../../nemesis/nemesis.dto';
+import { SecretEntity } from '../../secret/secret.entity';
+import { SecretDTO } from '../../secret/secret.dto';
+import { StatisticsCharacter } from 'src/models/interfaces/statistics-character.interface';
+import { NotFoundException } from '@nestjs/common';
 
 describe('CharacterService', () => {
 
     let characterService: CharacterService;
     let characterRepository: Repository<CharacterEntity>;
+    // eslint-disable-next-line @typescript-eslint/ban-types
     const characterRepositoryToken: string | Function = getRepositoryToken(CharacterEntity);
 
     // Mock data.
@@ -148,7 +149,7 @@ describe('CharacterService', () => {
                     select: jest.fn().mockReturnThis(),
                     addSelect: jest.fn().mockReturnThis(),
                     setParameter: jest.fn().mockReturnThis(),
-                    getRawOne: () => Promise.resolve(mockStatisticsCharacter)
+                    getRawOne: (): Promise<StatisticsCharacter | undefined> => Promise.resolve(mockStatisticsCharacter)
                 }))
             );
 
@@ -165,7 +166,7 @@ describe('CharacterService', () => {
                     select: jest.fn().mockReturnThis(),
                     addSelect: jest.fn().mockReturnThis(),
                     setParameter: jest.fn().mockReturnThis(),
-                    getRawOne: () => Promise.resolve(undefined)
+                    getRawOne: (): Promise<StatisticsCharacter | undefined> => Promise.resolve(undefined)
                 }))
             );
 
