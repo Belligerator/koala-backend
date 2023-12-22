@@ -19,7 +19,7 @@ export class NemesisEntity {
 
     @ManyToOne(() => CharacterEntity, (item) => item.nemesisList, { cascade: true })
     @JoinColumn([{ name: 'character_id', referencedColumnName: 'id' }])
-    public character: CharacterEntity;
+    public character?: CharacterEntity;
 
     @OneToMany(() => SecretEntity, (item) => item.nemesis)
     public secretList?: SecretEntity[];

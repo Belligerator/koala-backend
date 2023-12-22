@@ -6,7 +6,7 @@ import { NemesisEntity } from './nemesis.entity';
 export class NemesisDTO {
 
     public id: number;
-    public isAlive: boolean;
+    public is_alive: boolean;
     public years?: number;
     public character_id?: number;
     public character?: CharacterDTO;
@@ -14,7 +14,7 @@ export class NemesisDTO {
 
     constructor(nemesisEntity: NemesisEntity) {
         this.id = nemesisEntity.id;
-        this.isAlive = nemesisEntity.isAlive;
+        this.is_alive = nemesisEntity.isAlive;
         this.years = nemesisEntity.years;
         this.character_id = nemesisEntity.characterId;
 
